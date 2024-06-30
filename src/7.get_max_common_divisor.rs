@@ -33,3 +33,4 @@ fn get_max_common_divisor (a: u32, b: u32) -> u32 {
   }
   return max;
 }
+// 注意事项

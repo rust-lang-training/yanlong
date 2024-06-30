@@ -7,6 +7,7 @@ fn main () {
 
   println!("使用循环方法输入 1");
   println!("使用迭代方法输入 2");
+  println!("使用匹配迭代方法输入 3");
   let mut mode = String::new();
   io::stdin().read_line(&mut mode).expect("读取模式输入失败！");
   let mode = mode.trim();
@@ -19,6 +20,10 @@ fn main () {
   
   if mode == "2" {
     result = fibo_iter(n);
+  }
+
+  if mode == "3" {
+    result = fibo_match(n);
   }
   
   println!("斐波那契数列第 {} 项的值为 {}", n, result);
@@ -54,4 +59,12 @@ fn fibo_iter (val: u32) -> u32 {
   }
   
   return fibo_iter( val - 1 ) + fibo_iter (val - 2);
+}
+
+fn fibo_match (val: u32) -> u32 {
+  match val {
+    0 => 0,
+    1 | 2 => 1,
+    _ => fibo_match( val - 1 ) + fibo_match (val - 2)
+  }
 }
