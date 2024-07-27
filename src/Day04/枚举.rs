@@ -6,7 +6,6 @@ enum Message {
   Quit,
   Move {x :i32, y: i32},
   Write(String),
-
 }
 #[derive(Debug)]
 // ?枚举后面跟等号什么意思
@@ -26,7 +25,6 @@ impl Robot {
       Message::Write(s) => println!("Hello {}", s),
       Message::Quit => println!("Bye bye ~"),
     }
-
   }
 }
 

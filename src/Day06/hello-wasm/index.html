@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea id="md" style="height:500px;width:500px"></textarea>
+    <button id="preview">预览</button>
+    <textarea disabled id="html" style="height:500px;width:500px"></textarea>
+    <script type="module">
+      import init, { md_to_html } from './pkg/hello_wasm.js';
+      async function run() {
+        await init();
+        const md = document.getElementById('md');
+        const html = document.getElementById('html');
+        let mdValue = '';
+
+        md.addEventListener('input', () => {
+          mdValue = md.value;
+        });
+
+        document.getElementById('preview').addEventListener('click', () => {
+           const res = md_to_html(mdValue);
+           html.value = res
+           console.log(res)
+        });
+      }
+      run()
+    </script>
+  </body>
+</html>
